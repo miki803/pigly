@@ -34,10 +34,9 @@
                         @enderror
                     </p>
                 </div>
+
                 <input class="login-form__btn btn" type="submit" value="ログイン">
-                @section('link')
                 <a class="header__link" href="{{ route('register.step1') }}">アカウントの作成はこちら</a>
-                @endsection
             </form>
         </div>
     </div>

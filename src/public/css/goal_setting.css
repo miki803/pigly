@@ -1,0 +1,77 @@
+/* ----- フォーム中央配置 ----- */
+.goal_setting__inner {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.goal_setting__inner h2 {
+    color: #8B7969;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+/* ----- 入力グループ ----- */
+.goal_setting__group {
+    margin-bottom: 24px;
+}
+
+.goal_setting__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.goal_setting__input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* ----- エラーメッセージ ----- */
+.goal_setting__error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* ----- ボタン配置 ----- */
+.button-content {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.back {
+    display: inline-block;
+    background-color: #ccc;
+    color: #333;
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+}
+
+.back:hover {
+    background-color: #aaa;
+}
+
+.button-change {
+    background-color: #8fd19e;
+    color: #fff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button-change:hover {
+    opacity: 0.9;
+}

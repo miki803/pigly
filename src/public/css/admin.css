@@ -1,0 +1,251 @@
+/* ===========================================
+   上部体重情報エリア
+=========================================== */
+.weight-summary {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0 32px;
+}
+
+.weight-summary__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.weight-summary__item label {
+    font-weight: bold;
+    color: #8B7969;
+    margin-bottom: 8px;
+}
+
+.weight-summary__input {
+    width: 100px;
+    height: 40px;
+    text-align: right;
+    background-color: #F4F4F4;
+    border: none;
+    color: #8B7969;
+    font-size: 16px;
+}
+
+/* ===========================================
+   検索フォーム
+=========================================== */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin: 10px 0 32px;
+}
+
+.search-form input[type="date"] {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.search-form__btn {
+    background-color: #6ab04c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.search-form__btn:hover {
+    background-color: #4e944f;
+}
+
+.reset-btn {
+    background-color: #ccc;
+    color: #333;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.reset-btn:hover {
+    background-color: #aaa;
+}
+
+.add-btn {
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.add-btn:hover {
+    background-color: #2c80b4;
+}
+
+/* ===========================================
+   テーブル
+=========================================== */
+.admin__table-wrapper {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.admin__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.admin__table th {
+    background-color: #8B7969;
+    color: #fff;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.admin__table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.admin__table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 詳細ボタン */
+.admin__detail-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 5px;
+    background-color: #D9C6B5;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.admin__detail-btn:hover {
+    background-color: #b89f8a;
+}
+
+/* ===========================================
+   モーダル
+=========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal:target {
+    display: block;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.modal__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal__title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8B7969;
+    font-size: 20px;
+}
+
+.modal__group {
+    margin-bottom: 16px;
+}
+
+.modal__group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.modal__group input,
+.modal__group textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.modal__textarea {
+    height: 120px;
+    /* 運動内容は大きめ */
+    resize: vertical;
+}
+
+/* モーダル下部のボタン横並び */
+.modal__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.modal__btn {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal__btn--close {
+    background-color: #ccc;
+    color: #333;
+}
+
+.modal__btn--save {
+    background-color: #8fd19e;
+    color: #fff;
+}
+
+.modal__btn:hover {
+    opacity: 0.9;
+}
+
+/* ===========================================
+   レスポンシブ対応
+=========================================== */
+@media screen and (max-width: 600px) {
+    .weight-summary {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .modal__inner {
+        width: 90%;
+        padding: 20px;
+    }
+}

@@ -10,7 +10,7 @@
     <div class="register-form">
         <h1 class="register-form__heading">PiGLy</h1>
         <h2 class="register-form__heading">新規会員登録</h2>
-        <p class="register-form__subtext">STEP2 体重データの入力</p>
+        <p class="register-form__heading">STEP2 体重データの入力</p>
 
         <div class="register-form__inner">
             <form class="register-form__form" action="{{ route('register.step2') }}" method="post">

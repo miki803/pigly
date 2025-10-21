@@ -1,0 +1,118 @@
+/* ----- フォーム全体 ----- */
+.data-form__inner {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-form__inner h2 {
+    text-align: center;
+    color: #8B7969;
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+/* ----- 入力グループ ----- */
+.data-form__group {
+    margin-bottom: 20px;
+}
+
+.data-form__group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.data-form__group .required {
+    color: red;
+    margin-left: 4px;
+    font-size: 14px;
+}
+
+/* 入力フィールド */
+.data-form__group input,
+.data-form__group textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.data-form__group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* エラーメッセージ */
+.data_error_message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* ----- ボタン配置 ----- */
+.data-form__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    /* ボタン間隔 */
+    margin-top: 24px;
+}
+
+.back {
+    display: inline-block;
+    background-color: #ccc;
+    color: #333;
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.back:hover {
+    background-color: #aaa;
+}
+
+.button-register {
+    background-color: #8fd19e;
+    color: #fff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-register:hover {
+    opacity: 0.9;
+}
+
+/* ----- 削除ボタン ----- */
+.delete-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.button-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.trash-icon {
+    width: 28px;
+    height: 28px;
+    transition: 0.2s;
+}
+
+.trash-icon:hover {
+    transform: scale(1.1);
+}
