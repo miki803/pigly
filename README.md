@@ -55,3 +55,7 @@ php artisan db:seed
 ## URL
 - 開発環境：http://localhost/login
 - phpMyAdmin:：http://localhost:8080/
+
+## ログイン
+-test@example.com
+-password123

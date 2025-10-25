@@ -170,24 +170,69 @@ body {
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    margin: 30px 0;
+    list-style: none;
+    padding: 0;
+    gap: 6px;
 }
 
 .pagination a,
 .pagination span {
     display: inline-block;
-    margin: 0 4px;
-    padding: 8px 12px;
+    padding: 8px 14px;
     border-radius: 6px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    color: #333;
-    text-decoration: none;
     font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.2s ease;
 }
-
+.pagination li {
+    display: inline-block;
+}
+.pagination .page-link {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.2s ease;
+}
 .pagination a:hover {
-    background-color: #f5e8fa;
+    background-color: #f3e7da;
+    border-color: #8b7969;
+    color: #8b7969;
+}
+.pagination .active .page-link {
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
+    color: #fff;
+    border: 1px solid transparent;
+    cursor: default;
+}
+.pagination .disabled .page-link {
+    color: #aaa;
+    background-color: #f2f2f2;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+.pagination .active span {
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
+    color: #fff;
+    border: 1px solid transparent;
+    cursor: default;
+}
+.pagination .disabled span {
+    color: #aaa;
+    background-color: #f2f2f2;
+    border-color: #ddd;
+    cursor: not-allowed;
 }
 .modal {
     display: none;
