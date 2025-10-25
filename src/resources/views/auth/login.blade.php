@@ -8,8 +8,8 @@
 </head>
 <body>
     <div class="login-form">
-        <h1 class="login-form__heading">PiGLy</h1>
-        <h2 class="login-form__heading">ログイン</h2>
+        <h1 class="login-form__logo">PiGLy</h1>
+        <h2 class="login-form__title">ログイン</h2>
 
 
         <div class="login-form__inner">
@@ -18,7 +18,7 @@
 
                 <div class="login-form__group">
                     <label class="login-form__label" for="email">メールアドレス</label>
-                    <input class="login-form__input" type="mail" name="email" id="email" placeholder="メールアドレスを入力">
+                    <input class="login-form__input" type="email" name="email" id="email"  value="{{ old('email') }}"placeholder="メールアドレスを入力">
                     <p class="login-form__error-message">
                         @error('email')
                         {{ $message }}
@@ -35,8 +35,8 @@
                     </p>
                 </div>
 
-                <input class="login-form__btn btn" type="submit" value="ログイン">
-                <a class="header__link" href="{{ route('register.step1') }}">アカウントの作成はこちら</a>
+                <button class="login-form__btn btn" type="submit" >ログイン</button>
+                <a class="login__link" href="{{ route('register.step1') }}">アカウントの作成はこちら</a>
             </form>
         </div>
     </div>

@@ -1,142 +1,194 @@
-/* ===========================================
-   上部体重情報エリア
-=========================================== */
-.weight-summary {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 40px 0 32px;
+body {
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 40px;
+    color: #333;
 }
 
-.weight-summary__item {
+.admin__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.summary {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.summary-weight {
     text-align: center;
 }
 
-.weight-summary__item label {
+.summary-label {
+    color: #777;
+    font-size: 14px;
+}
+
+.summary-value {
+    font-size: 36px;
     font-weight: bold;
-    color: #8B7969;
-    margin-bottom: 8px;
 }
 
-.weight-summary__input {
-    width: 100px;
-    height: 40px;
-    text-align: right;
-    background-color: #F4F4F4;
-    border: none;
-    color: #8B7969;
+.summary-value span {
     font-size: 16px;
+    font-weight: normal;
 }
 
-/* ===========================================
-   検索フォーム
-=========================================== */
-.search-form {
+.filter {
+    background: #fff;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.filter-form {
     display: flex;
     align-items: center;
-    gap: 8px;
-    justify-content: center;
-    margin: 10px 0 32px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-
-.search-form input[type="date"] {
-    padding: 6px;
+.filter-input {
+    padding: 6px 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-size: 14px;
 }
 
-.search-form__btn {
-    background-color: #6ab04c;
-    color: white;
-    border: none;
-    padding: 6px 12px;
+.filter-form__btn,
+.reset-btn {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 14px;
+}
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
 }
 
-.search-form__btn:hover {
-    background-color: #4e944f;
+.filter-form__btn {
+    background-color: #8b7969;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .reset-btn {
-    background-color: #ccc;
+    background-color: #fff;
     color: #333;
+    border: 1px solid #ccc;
     text-decoration: none;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.2s;
 }
-
 .reset-btn:hover {
-    background-color: #aaa;
+    background-color: #f2f2f2;
 }
-
 .add-btn {
-    background-color: #3498db;
+    margin-left: auto;
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
     color: white;
     text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 6px;
+    padding: 8px 18px;
+    border-radius: 20px;
     font-weight: bold;
-    transition: 0.2s;
+    transition: 0.2s;;
 }
-
 .add-btn:hover {
-    background-color: #2c80b4;
+    opacity: 0.9;
 }
 
-/* ===========================================
-   テーブル
-=========================================== */
-.admin__table-wrapper {
-    margin-top: 20px;
-    overflow-x: auto;
+.filter__result {
+    margin-top: 10px;
+    color: #555;
+    font-size: 14px;
 }
 
+.table-area {
+    background: #fff;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
 .admin__table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
+    background-color: #fff;
+    border: none;
 }
-
 .admin__table th {
-    background-color: #8B7969;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
+    font-weight: bold;
     padding: 12px 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    border-bottom: 2px solid #8b7969;
 }
 
 .admin__table td {
-    border: 1px solid #ddd;
-    padding: 10px;
+    padding: 12px 0;
+    border: none;;
 }
-
-.admin__table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* 詳細ボタン */
+）
 .admin__detail-btn {
     display: inline-block;
-    padding: 6px 12px;
-    border-radius: 5px;
-    background-color: #D9C6B5;
-    color: #fff;
-    text-decoration: none;
     transition: 0.2s;
 }
 
-.admin__detail-btn:hover {
-    background-color: #b89f8a;
+.edit-icon {
+    width: 20px;
+    height: 20px;
+    transition: 0.2s;
 }
 
-/* ===========================================
-   モーダル
-=========================================== */
+.edit-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.pagination a:hover {
+    background-color: #f5e8fa;
+}
 .modal {
     display: none;
     position: fixed;
@@ -175,8 +227,9 @@
 .modal__title {
     text-align: center;
     margin-bottom: 20px;
-    color: #8B7969;
+    color: #8b7969;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .modal__group {
@@ -197,15 +250,15 @@
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
-.modal__textarea {
-    height: 120px;
-    /* 運動内容は大きめ */
-    resize: vertical;
+.modal__group input:focus,
+.modal__group textarea:focus {
+    outline: none;
+    border-color: #c89ef1;
+    box-shadow: 0 0 0 2px rgba(200, 158, 241, 0.2);
 }
-
-/* モーダル下部のボタン横並び */
 .modal__buttons {
     display: flex;
     justify-content: center;
@@ -219,33 +272,37 @@
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
 .modal__btn--close {
     background-color: #ccc;
     color: #333;
+    text-decoration: none;
 }
 
 .modal__btn--save {
-    background-color: #8fd19e;
-    color: #fff;
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
+    color: white;
 }
 
 .modal__btn:hover {
     opacity: 0.9;
 }
-
-/* ===========================================
-   レスポンシブ対応
-=========================================== */
-@media screen and (max-width: 600px) {
-    .weight-summary {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .modal__inner {
-        width: 90%;
-        padding: 20px;
-    }
+.required {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+.data_error_message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
 }

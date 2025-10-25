@@ -1,9 +1,8 @@
 <?php
 
-namespace Laravel\Fortify\Http\Requests;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Laravel\Fortify\Fortify;
 
 class LoginRequest extends FormRequest
 {
@@ -28,18 +27,15 @@ class LoginRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                'regex:/^[^@\s]+@[^@\s]+\.[^@\s]+$/'
             ],
             'password' => 'required',
         ];
     }
-
     public function messages(): array
     {
         return [
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
-            'email.regex' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
             'password.required' => 'パスワードを入力してください',
         ];
     }

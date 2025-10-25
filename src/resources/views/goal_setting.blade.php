@@ -7,21 +7,23 @@
 @section('content')
 
 <div class="goal_setting__inner">
+    <h2 class="goal-title">目標体重設定</h2>
     <form action="{{ route('weight_logs.goal.update') }}" method="post">
         @csrf
         @method('PATCH')
 
         <div class="goal_setting__group">
-            <label class="goal_setting__label" for="goal_weight">目標体重設定</label>
-            <input class="goal_setting__input" type="number" name="goal_weight" id="goal_weight" value="{{ old('goal_weight', $user->goal_weight) }}" step="0.1"> kg
+            <input class="goal_setting__input" type="number" name="goal_weight" id="goal_weight" value="{{ old('goal_weight', $goal->target_weight ?? '') }}" step="0.1"> kg
+            <p class="goal_setting__error-message">
             @error('goal_weight')
-            <p class="goal_setting__error-message">{{ $message }}</p>
+            {{ $message }}
             @enderror
+            </p>
         </div>
 
         <div class="button-content">
-            <a href="{{ route('weight_logs.index') }}" class="back">戻る</a>
-            <button type="submit" class="button-change">更新</button>
+            <a class="button-back" href="{{ route('weight_logs.index') }}" >戻る</a>
+            <button class="button-update" type="submit">更新</button>
         </div>
     </form>
 </div>

@@ -7,109 +7,147 @@
 @section('content')
 <div class="admin__inner">
 
-  <!-- 上部体重情報エリア -->
-  <div class="weight-summary">
-    <div class="weight-summary__item">
-      <label>目標体重（kg）</label>
-      <input type="text" class="weight-summary__input" value="{{ $goal_weight ?? '-' }}" readonly>
+  <!-- ===================== 上部体重情報エリア ===================== -->
+  <section class="summary">
+    <div class="summary-weight">
+      <p class="summary-label">目標体重</p>
+      <p class="summary-value">{{ is_numeric($goal_weight) ? number_format($goal_weight, 1) : '-' }}<span>kg</span></p>
     </div>
-    <div class="weight-summary__item">
-      <label>最新体重（kg）</label>
-      <input type="text" class="weight-summary__input" value="{{ $latest_weight ?? '-' }}" readonly>>
+    <div class="summary-weight">
+      <p class="summary-label">目標まで</p>
+      <p class="summary-value">
+        @if(is_numeric($latest_weight) && is_numeric($goal_weight))
+          {{ number_format($goal_weight - $latest_weight, 1) * -1 }}<span>kg</span>
+        @else
+          -
+        @endif
+      </p>
     </div>
-    <div class="weight-summary__item">
-      <label>残り（kg）</label>
-      <input type="text" class="weight-summary__input" value="{{ isset($goal_weight, $latest_weight) ? $goal_weight - $latest_weight : '-' }}" readonly>
+    <div class="summary-weight">
+      <p class="summary-label">最新体重</p>
+      <p class="summary-value">{{ is_numeric($latest_weight) ? number_format($latest_weight, 1) : '-' }}<span>kg</span></p>
     </div>
-  </div>
+  </section>
 
-  <!-- 日付検索フォーム -->
-  <form action="{{ route('weight_logs.search') }}" method="GET" class="search-form">
-    <input type="date" name="start_date" value="{{ request('start_date') }}">
-    <span>〜</span>
-    <input type="date" name="end_date" value="{{ request('end_date') }}">
-    <div class="search-form__actions">
-      <button type="submit" class="search-form__btn">検索</button>
+  <!-- ===================== 検索フォーム ===================== -->
+  <section class="filter">
+  <form class="filter-form" action="{{ route('weight_logs.index') }}" method="GET">
+    <!-- 日付範囲 -->
+    <div class="filter-date">
+      <input class="filter-input" type="date" name="start_date" value="{{ request('start_date') }}">
+      <span>〜</span>
+      <input class="filter-input" type="date" name="end_date" value="{{ request('end_date') }}">
+    </div>
+
+    <!-- ボタン群 -->
+    <div class="filter-actions">
+      <button class="filter-form__btn" type="submit">検索</button>
       @if(request('start_date') || request('end_date'))
-        <a href="{{ route('weight_logs.index') }}" class="reset-btn">リセット</a>
+        <a class="reset-btn" href="{{ route('weight_logs.index') }}">リセット</a>
       @endif
-      <a href="{{ route('weight_logs.create') }}" class="add-btn">データ追加</a>
+      <a class="add-btn" href="#addDataModal">データ追加</a>
     </div>
   </form>
 
-  <!-- テーブル -->
-  <table class="admin__table">
-    <tr class="admin__row">
-      <th class="admin__label">日付</th>
-      <th class="admin__label">体重（kg）</th>
-      <th class="admin__label">摂取カロリー（kcal）</th>
-      <th class="admin__label">運動時間（分）</th>
-      <th class="admin__label"></th>
-    </tr>
+  @if (isset($start_date) && isset($end_date))
+    <p class="filter__result">
+      {{ $start_date }}〜{{ $end_date }} の検索結果 {{ $weightLogs->total() }}件
+    </p>
+  @endif
+</section>
 
-    @foreach($weightLogs as $log)
-    <tr class="admin__row">
-      <td class="admin__data">{{ \Carbon\Carbon::parse($log->date)->format('Y/m/d') }}</td>
-      <td class="admin__data">{{ $log->weight }} kg</td>
-      <td class="admin__data">{{ $log->calories }} kcal</td>
-      <td class="admin__data">{{ sprintf('%02d:%02d', floor($log->exercise_time / 60), $log->exercise_time % 60) }}</td>
-      <td class="admin__data">
-        <a class="admin__detail-btn" href="{{ route('weight_logs.show', $log->id) }}">詳細</a>
-      </td>
-    </tr>
-    @endforeach
-  </table>
 
-  <!-- ページネーション -->
+  <!-- ===================== テーブル ===================== -->
+  <section class="table-area">
+    <table class="admin__table">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>体重</th>
+          <th>摂取カロリー</th>
+          <th>運動時間</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($weightLogs as $log)
+        <tr>
+          <td>{{  \Carbon\Carbon::parse($log->date)->format('Y/m/d')  }}</td>
+          <td>{{ number_format($log->weight, 1) }}kg</td>
+          <td>{{ $log->calories  }}kcal</td>
+          <td>{{ \Carbon\Carbon::parse($log->exercise_time)->format('H:i')  }}</td>
+          <td>
+            <a class="admin__detail-btn" href="{{ route('weight_logs.show', $log->id) }}">
+              <img class="edit-icon" src="{{ asset('images/鉛筆.png') }}" alt="編集">
+            </a>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== ページネーション ===================== -->
   <div class="pagination">
     {{ $weightLogs->appends(request()->query())->links() }}
   </div>
 
 </div>
 
-<!-- データ追加モーダル -->
+<!-- ===================== データ追加モーダル ===================== -->
 <div class="modal" id="addDataModal">
   <a href="#!" class="modal-overlay"></a>
   <div class="modal__inner">
     <div class="modal__content">
-      <h2>体重データ追加</h2>
-      <form action="{{ route('data.store') }}" method="post">
+      <h2 class="modal__title">Weight Logを追加</h2>
+      <form action="{{ route('weight_logs.store') }}" method="post">
         @csrf
-        <div class="modal-form__group">
-          <label>日付<span class="required">必須</span></label>
-          <input type="date" name="date" required>
+        <!-- 日付 -->
+        <div class="modal__group">
+          <label>日付 <span class="required">必須</span></label>
+          <input type="date" name="date" value="{{ old('date', now()->format('Y-m-d')) }}">
           @error('date')
-            <span class="data_error_message">{{ $message }}</span>
+            <p class="data_error_message">{{ $message }}</p>
           @enderror
         </div>
-        <div class="modal-form__group">
-          <label>体重<span class="required">必須</span></label>
-          <input type="number" name="weight" step="0.1" required>
+
+        <!-- 体重 -->
+        <div class="modal__group">
+          <label>体重 <span class="required">必須</span></label>
+          <input type="number" name="weight" step="0.1" value="{{ old('weight') }}">
           @error('weight')
-            <span class="data_error_message">{{ $message }}</span>
+            <p class="data_error_message">{{ $message }}</p>
           @enderror
         </div>
-        <div class="modal-form__group">
-          <label>摂取カロリー<span class="required">必須</span></label>
-          <input type="number" name="calories" required>
+
+        <!-- 摂取カロリー -->
+        <div class="modal__group">
+          <label>摂取カロリー <span class="required">必須</span></label>
+          <input type="number" name="calories" value="{{ old('calories') }}">
           @error('calories')
-            <span class="data_error_message">{{ $message }}</span>
+            <p class="data_error_message">{{ $message }}</p>
           @enderror
         </div>
-        <div class="modal-form__group">
-          <label>運動時間<span class="required">必須</span></label>
-          <input type="number" name="exercise_time" required>
+
+        <!-- 運動時間 -->
+        <div class="modal__group">
+          <label>運動時間 <span class="required">必須</span></label>
+          <input type="time" name="exercise_time" value="{{ old('exercise_time') }}">
           @error('exercise_time')
-            <span class="data_error_message">{{ $message }}</span>
+            <p class="data_error_message">{{ $message }}</p>
           @enderror
         </div>
-        <div class="modal-form__group">
+
+        <!-- 運動内容 -->
+        <div class="modal__group">
           <label>運動内容</label>
-          <textarea name="exercise_detail" rows="6"></textarea>
+          <textarea name="exercise_detail" rows="4">{{ old('exercise_detail') }}</textarea>
           @error('exercise_detail')
-            <span class="data_error_message">{{ $message }}</span>
+            <p class="data_error_message">{{ $message }}</p>
           @enderror
         </div>
+
+        <!-- ボタン -->
         <div class="modal__buttons">
           <a href="#!" class="modal__btn modal__btn--close">戻る</a>
           <button type="submit" class="modal__btn modal__btn--save">登録</button>

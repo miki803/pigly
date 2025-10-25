@@ -1,112 +1,113 @@
-/* ----- フォーム全体 ----- */
+body {
+    background-color: #f8f8f8;
+    font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+.main {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
 .data-form__inner {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 24px;
     background: #fff;
+    width: 650px;
+    padding: 40px 50px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.data-form__inner h2 {
-    text-align: center;
-    color: #8B7969;
-    margin-bottom: 24px;
-    font-size: 24px;
+.data-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
 }
-
-/* ----- 入力グループ ----- */
 .data-form__group {
     margin-bottom: 20px;
 }
 
-.data-form__group label {
+.data-label {
     display: block;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 15px;
     margin-bottom: 6px;
-    color: #333;
+}
+.unit-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.data-form__group .required {
-    color: red;
-    margin-left: 4px;
-    font-size: 14px;
+.unit {
+    font-size: 15px;
+    color: #555;
 }
-
-/* 入力フィールド */
-.data-form__group input,
-.data-form__group textarea {
+.data-input {
     width: 100%;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 10px 12px;
     border: 1px solid #ccc;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
 }
-
+.data-input[type="time"] {
+    width: 150px;
+}
+.data-input:focus {
+    border-color: #c89ef1;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(200, 158, 241, 0.2);
+}
 .data-form__group textarea {
-    height: 120px;
-    resize: vertical;
+    height: 100px;
+    resize: none;
 }
-
-/* エラーメッセージ */
 .data_error_message {
-    color: red;
-    font-size: 14px;
-    margin-top: 4px;
-    display: block;
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 6px;
+    line-height: 1.4;
 }
-
-/* ----- ボタン配置 ----- */
 .data-form__buttons {
     display: flex;
-    justify-content: center;
-    gap: 32px;
-    /* ボタン間隔 */
-    margin-top: 24px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
 }
-
-.back {
-    display: inline-block;
-    background-color: #ccc;
-    color: #333;
-    text-decoration: none;
-    padding: 8px 24px;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-.back:hover {
-    background-color: #aaa;
-}
-
-.button-register {
-    background-color: #8fd19e;
-    color: #fff;
-    border: none;
-    padding: 8px 24px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.button-register:hover {
-    opacity: 0.9;
-}
-
-/* ----- 削除ボタン ----- */
-.delete-form {
+.button-group {
     display: flex;
-    justify-content: center;
-    margin-top: 16px;
+    align-items: center;
+    gap: 15px;
+}
+.data-back {
+    background: #e0e0e0;
+    color: #333;
+    padding: 10px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.button-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.data-update {
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
+    color: white;
+    padding: 10px 36px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.delete-form-inline {
+    display: inline-block;
 }
 
 .button-delete {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
 }
-
 .trash-icon {
     width: 28px;
     height: 28px;

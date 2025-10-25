@@ -1,84 +1,91 @@
-/*  全体を中央に配置 */
 body {
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+    background: linear-gradient(135deg, #f8d7f9, #fce3ec);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f2f2f2;
-    margin: 0;
 }
 
-/*  登録フォーム全体 */
 .register-form {
-    padding: 64px 96px;
-    width: 40vw;
-    border: 1px solid #C5B9B0;
-    border-radius: 8px;
-    background-color: #FDFEFE;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/*  タイトル・見出し部分 */
-.register-form__heading {
+    background-color: #fff;
+    width: 430px;
+    padding: 50px 60px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-top: 24px;
 }
 
-/*  フォーム内側 */
+.register-form__logo {
+    font-size: 40px;
+    color: #d28de8;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-style: normal;
+}
+
+.register-form__title {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.register-form__step {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
 .register-form__inner {
     margin-top: 48px;
 }
+.register-form__form {
+    text-align: left;
+}
 
-/*  入力グループ */
 .register-form__group {
     margin-top: 32px;
 }
-
-.register-form__group:first-of-type {
-    margin-top: 0;
-}
-
-/*  ラベルと入力欄 */
 .register-form__label {
     display: block;
-    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
 }
 
 .register-form__input {
-    display: inline-block;
-    padding: 8px 12px;
-    width: calc(100% - 40px);
-    /* 「kg」を考慮して少し短く */
-    height: 48px;
-    border: none;
-    background-color: #F4F4F4;
-    color: #555;
-    font-family: serif;
-    border-radius: 4px;
-    margin-right: 4px;
-}
-
-/*  エラーメッセージ */
-.register-form__error-message {
-    color: #FF9494;
-    font-size: 14px;
-    margin-top: 4px;
-}
-
-/*  送信ボタン */
-.register-form__btn {
-    display: block;
-    margin: 40px auto 0;
-    padding: 10px 24px;
-    background-color: #C5B9B0;
-    color: #fff;
-    border: none;
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid #ddd;
     border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.register-form__unit{
+    margin-left: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.register-form__error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.register-form__btn {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
+    color: white;
+    font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    margin-top: 10px;
 }
 
-.register-form__btn:hover {
-    background-color: #b2a69e;
-}

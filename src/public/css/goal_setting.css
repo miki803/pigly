@@ -1,75 +1,73 @@
-/* ----- フォーム中央配置 ----- */
-.goal_setting__inner {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 32px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
 }
 
-.goal_setting__inner h2 {
-    color: #8B7969;
-    font-size: 24px;
-    margin-bottom: 24px;
+/* ----- フォーム中央配置 ----- */
+.goal_setting__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+.goal-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
 }
 
 /* ----- 入力グループ ----- */
 .goal_setting__group {
-    margin-bottom: 24px;
-}
-
-.goal_setting__label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .goal_setting__input {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 6px;
+    width: 180px;
+    padding: 10px 40px 10px 12px;
     border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: right;
 }
 
 /* ----- エラーメッセージ ----- */
 .goal_setting__error-message {
     color: red;
     font-size: 14px;
-    margin-top: 4px;
+    margin-top: 6px;
+    margin-bottom: 15px;
 }
 
 /* ----- ボタン配置 ----- */
 .button-content {
     display: flex;
     justify-content: center;
-    gap: 24px;
-    margin-top: 16px;
+    gap: 18px;
+    margin-top: 20px;
 }
 
-.back {
-    display: inline-block;
-    background-color: #ccc;
+.button-back {
+    background: #e0e0e0;
     color: #333;
-    text-decoration: none;
-    padding: 8px 24px;
-    border-radius: 6px;
-}
-
-.back:hover {
-    background-color: #aaa;
-}
-
-.button-change {
-    background-color: #8fd19e;
-    color: #fff;
+    padding: 10px 36px;
     border: none;
-    padding: 8px 24px;
-    border-radius: 6px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button-update {
+    background: linear-gradient(90deg, #c89ef1, #f09aca);
+    color: white;
+    padding: 10px 36px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .button-change:hover {

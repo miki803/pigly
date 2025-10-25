@@ -50,8 +50,8 @@ php artisan db:seed
 - MySQL8.0.26
 
 ## ER図
-![alt]()
+![alt](erpig.drawio.png)
 
 ## URL
-- 開発環境：http://localhost/
+- 開発環境：http://localhost/login
 - phpMyAdmin:：http://localhost:8080/

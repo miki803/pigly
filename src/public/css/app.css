@@ -1,51 +1,71 @@
-/* ヘッダー全体の配置 */
 .header {
     display: flex;
     justify-content: space-between;
-    /* 左右に配置 */
     align-items: center;
     padding: 16px 48px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 }
-
-/* 左側のボタンエリア */
-.header__left {
-    display: flex;
-    gap: 16px;
-    /* ボタン同士の間隔 */
+.header__logo {
+    font-family: 'Lora', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 51px;
+    letter-spacing: 0.1em;
+    color: #EC87EF;
+    margin: 0;
 }
 
-/* 各ボタンデザイン */
+.header__right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
 .header__btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    /* アイコンと文字の間 */
-    padding: 8px 12px;
-    background-color: #FFB6C1;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 8px;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+
+    background: #F7F7F7;
+    border: 1px solid #CDCDCD;
+    border-radius: 5px;
+
     text-decoration: none;
-    transition: background-color 0.2s ease;
-}
+    font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #333333;
 
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
 .header__btn:hover {
-    background-color: #FF9AA2;
+    background: #ebebeb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
-/* アイコン画像 */
 .header__icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
 }
+.logout-form {
+    display: flex;
+    align-items: center;
+}
 
-/* ロゴを右端に寄せる */
-.header__logo {
-    margin-left: auto;
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
+.logout-btn {
+    background: none;
+    border: none;
+    font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #333333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
