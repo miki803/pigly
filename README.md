@@ -57,5 +57,5 @@ php artisan db:seed
 - phpMyAdmin:：http://localhost:8080/
 
 ## ログイン
--test@example.com
--password123
+- test@example.com
+- password123
