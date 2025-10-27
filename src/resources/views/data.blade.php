@@ -54,8 +54,8 @@
 
       <div class="data-form__group">
         <label class="data-label">運動内容</label>
-        <textarea class="data-input" name="exercise_detail" placeholder="運動内容を追加">{{ old('exercise_content', $weightLog->exercise_content) }}</textarea>
-        @error('exercise_detail')
+        <textarea class="data-input" name="exercise_content" rows="4" placeholder="運動内容を追加">{{ old('exercise_content', $weightLog->exercise_content) }}</textarea>
+        @error('exercise_content')
           <p class="data_error_message">{{ $message }}</p>
         @enderror
       </div>
@@ -66,7 +66,7 @@
       </div>
     </form>
 
-    <form action="{{ url('weight_logs/' . $weightLog->id . '/delete') }}" method="POST" class="delete-form-inline">
+    <form class="delete-form-inline" action="{{ url('weight_logs/' . $weightLog->id . '/delete') }}" method="POST" >
       @csrf
       @method('DELETE')
       <button class="button-delete" type="submit">

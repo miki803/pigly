@@ -11,7 +11,7 @@ class WeightLogRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -25,7 +25,12 @@ class WeightLogRequest extends FormRequest
     {
         return [
             'date' => 'required|date',
-            'weight' => ['required','numeric','regex:/^\d{1,4}(\.\d)?$/'],
+            'weight' => [
+                'required',
+                'numeric',
+                'digits_between:1,4',
+                'regex:/^\d+(\.\d{1})?$/'
+            ],
             'calories' => 'required|numeric',
             'exercise_time' => 'required',
             'exercise_content' => 'nullable|string|max:120',
@@ -38,11 +43,13 @@ class WeightLogRequest extends FormRequest
             'date.required' => '日付を入力してください',
             'weight.required' => '体重を入力してください',
             'weight.numeric' => '数字で入力してください',
-            'weight.regex' => '4桁までの数字で入力してください',
+            'weight.max_digits' => '4桁までの数字で入力してください',
+            'weight.regex' => '小数点は1桁で入力してください',
             'calories.required' => '摂取カロリーを入力してください',
             'calories.numeric' => '数字で入力してください',
             'exercise_time.required' => '運動時間を入力してください',
             'exercise_content.max' => '120文字以内で入力してください',
         ];
     }
+    
 }

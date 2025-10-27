@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WeightLogController;
 
 // ----------------- 認証 -----------------
-Route::get('/login', [RegisterController::class, 'showLogin'])->name('login');
-Route::post('/login', [RegisterController::class, 'login']);
-Route::post('/logout', [RegisterController::class, 'logout'])->name('logout');
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // ----------------- 会員登録 -----------------
 Route::get('/register/step1', [RegisterController::class, 'showStep1'])->name('register.step1');
@@ -16,7 +17,7 @@ Route::get('/register/step2', [RegisterController::class, 'showStep2'])->name('r
 Route::post('/register/step2', [RegisterController::class, 'storeStep2']);
 
 // ----------------- 体重ログ -----------------
-Route::prefix('weight_logs')->middleware('auth')->group(function () {
+Route::prefix('weight_logs')->group(function () {
 
     // 管理画面（トップページ）
     Route::get('/', [WeightLogController::class, 'index'])->name('weight_logs.index');
@@ -26,6 +27,11 @@ Route::prefix('weight_logs')->middleware('auth')->group(function () {
     Route::post('/create', [WeightLogController::class, 'store'])->name('weight_logs.store');
     // 体重検索
     Route::get('/search', [WeightLogController::class, 'search'])->name('weight_logs.search');
+
+    // 目標設定
+    Route::get('/goal_setting', [WeightLogController::class, 'goalSetting'])->name('weight_logs.goal.edit');
+    Route::patch('/goal_setting', [WeightLogController::class, 'updateGoal'])->name('weight_logs.goal.update');
+
     // 編集画面（data.blade.php を使用）
     Route::get('/{weightLog}/edit', [WeightLogController::class, 'show'])->name('weight_logs.edit');
     // 体重詳細
@@ -34,7 +40,4 @@ Route::prefix('weight_logs')->middleware('auth')->group(function () {
     Route::patch('/{weightLog}/update', [WeightLogController::class, 'update'])->name('weight_logs.update');
     // 体重削除
     Route::delete('/{weightLog}/delete', [WeightLogController::class, 'destroy'])->name('weight_logs.destroy');
-    // 目標設定
-    Route::get('/goal_setting', [WeightLogController::class, 'goalSetting'])->name('weight_logs.goal.edit');
-    Route::patch('/goal_setting', [WeightLogController::class, 'updateGoal'])->name('weight_logs.goal.update');
 });

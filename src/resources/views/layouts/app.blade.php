@@ -10,7 +10,10 @@
 <body>
     <div class="app">
         <header class="header">
-            <h1 class="header__logo">PiGLy</h1>
+            <h1 class="header__logo">
+                <a href="{{ route('weight_logs.index') }}" class="header__logo-link">PiGLy</a>
+            </h1>
+            </h1>
 
             <div class="header__right">
                 <a class="header__btn" href="{{ route('weight_logs.goal.edit') }}">

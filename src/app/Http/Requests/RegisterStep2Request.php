@@ -24,7 +24,7 @@ class RegisterStep2Request extends FormRequest
     public function rules()
     {
         return [
-            'latest_weight' => ['required', 'numeric', 'regex:/^\d{1,4}(\.\d)?$/'],
+            'current_weight' => ['required', 'numeric', 'regex:/^\d{1,4}(\.\d)?$/'],
             'goal_weight' => ['required', 'numeric', 'regex:/^\d{1,4}(\.\d)?$/'],
         ];
     }
@@ -32,9 +32,9 @@ class RegisterStep2Request extends FormRequest
     public function messages()
     {
         return [
-            'latest_weight.required' => '現在の体重を入力してください',
-            'latest_weight.numeric' => '4桁までの数字で入力してください',
-            'latest_weight.regex' => '小数点は1桁で入力してください',
+            'current_weight.required' => '現在の体重を入力してください',
+            'current_weight.numeric' => '4桁までの数字で入力してください',
+            'current_weight.regex' => '小数点は1桁で入力してください',
             'goal_weight.required' => '目標の体重を入力してください',
             'goal_weight.numeric' => '4桁までの数字で入力してください',
             'goal_weight.regex' => '小数点は1桁で入力してください',

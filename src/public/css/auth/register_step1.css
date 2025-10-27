@@ -1,7 +1,6 @@
 
 
 body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
     background: linear-gradient(135deg, #fde0f2 0%, #f9b6e0 50%, #f6a3de 100%);
     height: 100vh;
     margin: 0;
@@ -18,6 +17,7 @@ body {
     text-align: center;
 }
 .register-form__logo {
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     font-size: 40px;
     color: #d28de8;
     margin-bottom: 10px;

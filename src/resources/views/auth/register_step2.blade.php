@@ -17,7 +17,7 @@
                 @csrf
                 <div class="register-form__group">
                     <label class="register-form__label" for="weight">現在の体重</label>
-                    <input class="register-form__input" type="number" name="weight" id="weight" step="0.1" value="{{ old('current_weight') }}"placeholder="現在の体重を入力">
+                    <input class="register-form__input" type="number" name="current_weight" id="weight" step="0.1" value="{{ old('current_weight') }}" placeholder="現在の体重を入力">
                     <span class="register-form__unit">kg</span>
                     <p class="register-form__error-message">
                         @error('latest_weight')

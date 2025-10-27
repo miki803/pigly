@@ -16,7 +16,16 @@
     color: #EC87EF;
     margin: 0;
 }
-
+.header__logo-link {
+    text-decoration: none;
+    color: #EC87EF;
+    font-family: 'Lora', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 51px;
+    letter-spacing: 0.1em;
+}
 .header__right {
     display: flex;
     gap: 20px;
@@ -58,7 +67,7 @@
 
 .logout-btn {
     background: none;
-    border: none;
+    border: 1px solid #333;
     font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
     font-weight: 300;
     font-size: 16px;

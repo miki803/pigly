@@ -7,7 +7,7 @@
 @section('content')
 <div class="admin__inner">
 
-  <!-- ===================== 上部体重情報エリア ===================== -->
+  <!-- 上部体重情報エリア -->
   <section class="summary">
     <div class="summary-weight">
       <p class="summary-label">目標体重</p>
@@ -17,7 +17,10 @@
       <p class="summary-label">目標まで</p>
       <p class="summary-value">
         @if(is_numeric($latest_weight) && is_numeric($goal_weight))
-          {{ number_format($goal_weight - $latest_weight, 1) * -1 }}<span>kg</span>
+        @php
+          $diff = $latest_weight - $goal_weight;
+        @endphp
+          {{ number_format($goal_weight - $latest_weight, 1) }}<span>kg</span>
         @else
           -
         @endif
@@ -29,35 +32,36 @@
     </div>
   </section>
 
-  <!-- ===================== 検索フォーム ===================== -->
-  <section class="filter">
-  <form class="filter-form" action="{{ route('weight_logs.index') }}" method="GET">
+  <!-- 検索フォーム -->
+  <section class="table-area">
+    <form class="filter-form" action="{{ route('weight_logs.index') }}" method="GET">
     <!-- 日付範囲 -->
-    <div class="filter-date">
-      <input class="filter-input" type="date" name="start_date" value="{{ request('start_date') }}">
-      <span>〜</span>
-      <input class="filter-input" type="date" name="end_date" value="{{ request('end_date') }}">
-    </div>
+      <div class="filter-date">
+        <input class="filter-input" type="date" name="start_date" value="{{ request('start_date') }}">
+        <span>〜</span>
+        <input class="filter-input" type="date" name="end_date" value="{{ request('end_date') }}">
+      </div>
 
     <!-- ボタン群 -->
-    <div class="filter-actions">
-      <button class="filter-form__btn" type="submit">検索</button>
-      @if(request('start_date') || request('end_date'))
-        <a class="reset-btn" href="{{ route('weight_logs.index') }}">リセット</a>
-      @endif
-      <a class="add-btn" href="#addDataModal">データ追加</a>
-    </div>
-  </form>
+      <div class="filter-button">
+        <button class="filter-form__btn" type="submit">検索</button>
+        @if(request('start_date') || request('end_date'))
+          <a class="reset-btn" href="{{ route('weight_logs.index') }}">リセット</a>
+        @endif
+      </div>
+      <div class="filter-actions">
+        <a class="add-btn" href="#addDataModal">データ追加</a>
+      </div>
+    </form>
 
-  @if (isset($start_date) && isset($end_date))
-    <p class="filter__result">
-      {{ $start_date }}〜{{ $end_date }} の検索結果 {{ $weightLogs->total() }}件
-    </p>
-  @endif
-</section>
+    @if (isset($start_date) && isset($end_date))
+      <p class="filter__result">
+        {{ $start_date }}〜{{ $end_date }} の検索結果 {{ $weightLogs->total() }}件
+      </p>
+    @endif
+  </section>
 
-
-  <!-- ===================== テーブル ===================== -->
+  <!-- テーブル -->
   <section class="table-area">
     <table class="admin__table">
       <thead>
@@ -87,14 +91,14 @@
     </table>
   </section>
 
-  <!-- ===================== ページネーション ===================== -->
+  <!-- ページネーション -->
   <div class="pagination">
-    {{ $weightLogs->appends(request()->query())->links() }}
+    {{ $weightLogs->onEachSide(1)->links('vendor.pagination.default') }}
   </div>
 
 </div>
 
-<!-- ===================== データ追加モーダル ===================== -->
+<!-- データ追加モーダル -->
 <div class="modal" id="addDataModal">
   <a href="#!" class="modal-overlay"></a>
   <div class="modal__inner">
@@ -105,7 +109,7 @@
         <!-- 日付 -->
         <div class="modal__group">
           <label>日付 <span class="required">必須</span></label>
-          <input type="date" name="date" value="{{ old('date', now()->format('Y-m-d')) }}">
+          <input class="modal__input" type="date" name="date" value="{{ old('date', now()->format('Y-m-d')) }}">
           @error('date')
             <p class="data_error_message">{{ $message }}</p>
           @enderror
@@ -114,7 +118,10 @@
         <!-- 体重 -->
         <div class="modal__group">
           <label>体重 <span class="required">必須</span></label>
-          <input type="number" name="weight" step="0.1" value="{{ old('weight') }}">
+          <div class="unit-field">
+            <input class="modal__input" type="number" name="weight" step="0.1" value="{{ old('weight') }}">
+            <span class="unit">kg</span>
+          </div>
           @error('weight')
             <p class="data_error_message">{{ $message }}</p>
           @enderror
@@ -123,7 +130,10 @@
         <!-- 摂取カロリー -->
         <div class="modal__group">
           <label>摂取カロリー <span class="required">必須</span></label>
-          <input type="number" name="calories" value="{{ old('calories') }}">
+          <div class="unit-field">
+            <input class="modal__input" type="number" name="calories" value="{{ old('calories') }}">
+            <span class="unit">kcal</span>
+          </div>
           @error('calories')
             <p class="data_error_message">{{ $message }}</p>
           @enderror
@@ -132,7 +142,7 @@
         <!-- 運動時間 -->
         <div class="modal__group">
           <label>運動時間 <span class="required">必須</span></label>
-          <input type="time" name="exercise_time" value="{{ old('exercise_time') }}">
+          <input class="modal__input" type="time" name="exercise_time" value="{{ old('exercise_time') }}">
           @error('exercise_time')
             <p class="data_error_message">{{ $message }}</p>
           @enderror
@@ -141,8 +151,8 @@
         <!-- 運動内容 -->
         <div class="modal__group">
           <label>運動内容</label>
-          <textarea name="exercise_detail" rows="4">{{ old('exercise_detail') }}</textarea>
-          @error('exercise_detail')
+          <textarea name="exercise_content" rows="4">{{ old('exercise_content') }}</textarea>
+          @error('exercise_content')
             <p class="data_error_message">{{ $message }}</p>
           @enderror
         </div>
@@ -157,3 +167,13 @@
   </div>
 </div>
 @endsection
+
+@if ($errors->any())
+  <script>
+    window.addEventListener('load', function() {
+      if (window.location.hash !== '#addDataModal') {
+        window.location.hash = '#addDataModal';
+      }
+    });
+  </script>
+@endif

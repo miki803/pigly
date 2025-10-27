@@ -1,5 +1,4 @@
 body {
-    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     background: linear-gradient(135deg, #f8d7f9, #fce3ec);
     display: flex;
     justify-content: center;
@@ -29,6 +28,7 @@ body {
 }
 
 .login-form__logo {
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     font-size: 40px;
     color: #d28de8;
     margin-bottom: 10px;

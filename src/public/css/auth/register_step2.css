@@ -1,5 +1,4 @@
 body {
-    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     background: linear-gradient(135deg, #f8d7f9, #fce3ec);
     display: flex;
     justify-content: center;
@@ -17,6 +16,7 @@ body {
 }
 
 .register-form__logo {
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     font-size: 40px;
     color: #d28de8;
     margin-bottom: 10px;
@@ -68,7 +68,16 @@ body {
     color: #333;
     font-size: 14px;
 }
+.register-form__unit-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
+.unit {
+    font-size: 15px;
+    color: #555;
+}
 .register-form__error-message {
     color: #e74c3c;
     font-size: 13px;

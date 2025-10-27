@@ -12,17 +12,26 @@ body {
     height: 85vh;
 }
 
-.goal-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 25px;
+/* ★ 白枠カードエリア ★ */
+.goal_setting__card {
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* ----- 入力グループ ----- */
+/* タイトル中央配置 */
+.goal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* 入力グループ */
 .goal_setting__group {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .goal_setting__input {
@@ -34,20 +43,19 @@ body {
     text-align: right;
 }
 
-/* ----- エラーメッセージ ----- */
+/* エラーメッセージ */
 .goal_setting__error-message {
     color: red;
     font-size: 14px;
     margin-top: 6px;
-    margin-bottom: 15px;
 }
 
-/* ----- ボタン配置 ----- */
+/* ボタン */
 .button-content {
     display: flex;
     justify-content: center;
     gap: 18px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .button-back {
@@ -70,6 +78,6 @@ body {
     font-weight: bold;
 }
 
-.button-change:hover {
+.button-update:hover {
     opacity: 0.9;
 }

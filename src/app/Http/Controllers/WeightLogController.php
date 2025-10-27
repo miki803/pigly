@@ -14,7 +14,7 @@ class WeightLogController extends Controller
     // 一覧（管理画面）
     public function index(Request $request)
     {
-        $userId = Auth::id() ?? 1; 
+        $userId = Auth::id() ?? 1;
 
         $query = WeightLog::where('user_id', $userId);
 
@@ -76,7 +76,7 @@ class WeightLogController extends Controller
             'exercise_content' => $request->exercise_content,
         ]);
 
-        return redirect()->route('weight_logs.index')->with('success', '体重を登録しました');
+        return redirect()->route('weight_logs.index');
     }
     // 詳細画面（編集ページ）
     public function show(WeightLog $weightLog)
@@ -87,13 +87,13 @@ class WeightLogController extends Controller
     public function update(WeightLogRequest $request, WeightLog $weightLog)
     {
         $weightLog->update($request->validated());
-        return redirect()->route('weight_logs.index')->with('success', '体重データを更新しました');
+        return redirect()->route('weight_logs.index');
     }
     // 削除処理（DELETE /weight_logs/{id}/delete）
     public function destroy(WeightLog $weightLog)
     {
         $weightLog->delete();
-        return redirect()->route('weight_logs.index')->with('success', 'データを削除しました');
+        return redirect()->route('weight_logs.index');
     }
     // 目標体重設定画面
     public function goalSetting()
@@ -118,6 +118,6 @@ class WeightLogController extends Controller
             ['target_weight' => $request->goal_weight]
         );
 
-        return redirect()->route('weight_logs.index')->with('success', '目標体重を更新しました');
+        return redirect()->route('weight_logs.index');
     }
 }
