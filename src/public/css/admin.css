@@ -75,9 +75,6 @@ body {
     font-size: 14px;
 }
 .filter-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     margin-left: auto;
 }
 
@@ -121,7 +118,7 @@ body {
 }
 
 .filter__result {
-    margin-top: 10px;
+    margin: 10px 0 20px;;
     color: #555;
     font-size: 14px;
 }

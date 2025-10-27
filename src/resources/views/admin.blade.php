@@ -59,10 +59,8 @@
         {{ $start_date }}〜{{ $end_date }} の検索結果 {{ $weightLogs->total() }}件
       </p>
     @endif
-  </section>
 
   <!-- テーブル -->
-  <section class="table-area">
     <table class="admin__table">
       <thead>
         <tr>
@@ -89,12 +87,11 @@
         @endforeach
       </tbody>
     </table>
-  </section>
-
   <!-- ページネーション -->
-  <div class="pagination">
-    {{ $weightLogs->onEachSide(1)->links('vendor.pagination.default') }}
-  </div>
+    <div class="pagination">
+      {{ $weightLogs->onEachSide(1)->links('vendor.pagination.default') }}
+    </div>
+  </section>
 
 </div>
 
