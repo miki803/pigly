@@ -13,7 +13,7 @@
 
 
         <div class="login-form__inner">
-            <form class="login-form__form" action="{{ route('login') }}" method="post">
+            <form class="login-form__form" action="{{ route('login.post') }}" method="post">
                 @csrf
 
                 <div class="login-form__group">

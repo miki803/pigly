@@ -21,7 +21,7 @@ class RegisterStep2Request extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'current_weight' => ['required', 'numeric', 'regex:/^\d{1,4}(\.\d)?$/'],
@@ -29,7 +29,7 @@ class RegisterStep2Request extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'current_weight.required' => '現在の体重を入力してください',
