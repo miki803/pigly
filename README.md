@@ -58,4 +58,4 @@ php artisan db:seed
 
 ## ログイン
 - test@example.com
-- password123
+- password
